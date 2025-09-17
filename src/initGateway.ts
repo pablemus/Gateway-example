@@ -1,11 +1,14 @@
 import {fastifyHttpProxy} from "@fastify/http-proxy";
 import type {FastifyInstance} from "fastify";
+import {configDotenv} from "dotenv";
+configDotenv();
 
+const microServices = [
+    {upstream: String(process.env.MONOLITH_URL), prefix:"/api/v1/", rewritePrefix: "/api/v1/"}
+]
 export async function initGateway(fastify:FastifyInstance){
-    fastify.register(fastifyHttpProxy, {
-       upstream: 'http://138.118.105.246:3001',
-       prefix: '/api/v1/',
-       rewritePrefix: '/api/v1/'
-    });
+    for (let microService of microServices){
+        fastify.register(fastifyHttpProxy, microService);
+    }
     console.log("Proxy iniciado");
 }
