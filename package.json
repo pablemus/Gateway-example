@@ -1,0 +1,21 @@
+{
+  "name": "apigatewayrototec",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/server.ts",
+  "scripts": {
+    "dev": "tsx --watch src/server.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@fastify/cors": "^11.1.0",
+    "@fastify/http-proxy": "^11.3.0",
+    "@fastify/redis": "^7.0.2",
+    "@types/node": "^24.5.1",
+    "fastify": "^5.6.0",
+    "fastify-type-provider-zod": "^6.0.0",
+    "zod": "^4.1.9"
+  },
+  "type": "module"
+}
